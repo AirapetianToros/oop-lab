@@ -1,19 +1,16 @@
-const between = (min, max) => {
-  return Math.floor(Math.random() * (max - min) + min);
-};
-
 module.exports = class Array {
   constructor(arr = []) {
     this.arr = arr;
   }
 
-  fillArray = (length) => {
-    for (let i = 0; i < length; i++) {
-      this.arr.append(between(-100, 101));
-    }
-  };
-
   bubbleSort = () => {
+    const typeOfArray = typeof this.arr[0];
+    for (let i = 1; i < this.arr.length; i++) {
+      if (typeof this.arr[i] !== typeOfArray) {
+        throw "Can't sort mixed array";
+      }
+    }
+
     for (let i = 0; i < this.arr.length; i++) {
       for (let j = 0; j < this.arr.length; j++) {
         if (this.arr[j] > this.arr[j + 1]) {
